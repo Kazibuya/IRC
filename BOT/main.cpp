@@ -6,7 +6,7 @@
 /*   By: pmilner- <pmilner-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 13:45:21 by pmilner-          #+#    #+#             */
-/*   Updated: 2026/01/31 19:02:19 by pmilner-         ###   ########.fr       */
+/*   Updated: 2026/01/31 19:27:22 by pmilner-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int main( int ac, char **av )
 		return (1);
 	}
 
-	if (!validport(av[1]))
+	if (!validport(av[2]))
 	{
 		std::cerr << "INVALID PORT. PORT MUST CONTAIN ONLY NUMBERS." << std::endl;
 		return (1);
