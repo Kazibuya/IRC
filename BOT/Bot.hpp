@@ -6,7 +6,7 @@
 /*   By: pmilner- <pmilner-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 02:10:02 by pmilner-          #+#    #+#             */
-/*   Updated: 2026/01/31 13:44:38 by pmilner-         ###   ########.fr       */
+/*   Updated: 2026/01/31 19:39:10 by pmilner-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ class Bot
 		void		_rtd( Token &t );
 		void		_russian_roulette( Token &t );
 		void		_connect_4( Token &t );
-		void		_connect_4_human( Token &t );
+		bool		_connect_4_human( Token &t );
 		void		_connect_4_bot( Token &t );
 		void		_connect_4_init( Token &t );
 

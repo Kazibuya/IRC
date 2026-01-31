@@ -6,7 +6,7 @@
 /*   By: pmilner- <pmilner-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 09:10:57 by pmilner-          #+#    #+#             */
-/*   Updated: 2026/01/31 18:20:52 by pmilner-         ###   ########.fr       */
+/*   Updated: 2026/01/31 19:42:20 by pmilner-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,23 @@ void	Bot::_connect_4_init( Token &t )
 	}
 }
 
-void	Bot::_connect_4_human( Token &t )
+bool	Bot::_connect_4_human( Token &t )
 {
 	if (!_gameRunning)
-		return ;
-	generatePrivmsg(t, t.getSender() + " places a piece in column " + *t.getContent(1));
+		return false;
     if (!_game.dropPiece(HUMAN, std::atoi(t.getContent(1)->c_str()) - 1))
-		return ;
+	{
+		generatePrivmsg(t, t.getSender() + " you can't place a piece there.");
+		return false;
+	}
+	generatePrivmsg(t, t.getSender() + " places a piece in column " + *t.getContent(1));
 	_game.printBoard(*this, t);
     if (_game.checkWin(HUMAN))
 	{
     	generatePrivmsg(t, "How lucky.");
         _gameRunning = false;
     }
+	return (true);
 }
 
 void	Bot::_connect_4_bot( Token &t )
@@ -94,7 +98,8 @@ void	Bot::_connect_4( Token &t )
 		return ;
 	}
 
-	_connect_4_human(t);
+	if (!_connect_4_human(t))
+		return ;
 	_connect_4_bot(t);
 }
 
